@@ -17,6 +17,12 @@ public class User {
     private String userName;
 
     /**
+     * 用户邮箱
+     */
+    @Column(name = "user_email")
+    private String userEmail;
+
+    /**
      * 用户等级
      */
     @Column(name = "user_level")
@@ -50,6 +56,26 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
+
+    /**
+     * 获取用户名称
+     *
+     * @return user_name - 用户名称
+     */
+    public String getUserEmal() {
+        return userEmail;
+    }
+
+    /**
+     * 设置用户邮箱
+     *
+     * @param userEmail 用户邮箱
+     */
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+
 
     /**
      * 获取用户名称

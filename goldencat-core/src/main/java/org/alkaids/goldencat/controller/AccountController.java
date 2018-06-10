@@ -26,7 +26,7 @@ public class AccountController {
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestParam Integer id) {
+    public Result delete(@RequestParam String id) {
         accountService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
@@ -38,7 +38,7 @@ public class AccountController {
     }
 
     @PostMapping("/detail")
-    public Result detail(@RequestParam Integer id) {
+    public Result detail(@RequestParam String id) {
         Account account = accountService.findById(id);
         return ResultGenerator.genSuccessResult(account);
     }

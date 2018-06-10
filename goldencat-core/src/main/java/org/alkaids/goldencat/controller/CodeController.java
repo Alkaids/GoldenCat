@@ -29,7 +29,7 @@ public class CodeController {
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestParam Integer id) {
+    public Result delete(@RequestParam String id) {
         codeService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
@@ -41,7 +41,7 @@ public class CodeController {
     }
 
     @PostMapping("/detail")
-    public Result detail(@RequestParam Integer id) {
+    public Result detail(@RequestParam String id) {
         Code code = codeService.findById(id);
         return ResultGenerator.genSuccessResult(code);
     }

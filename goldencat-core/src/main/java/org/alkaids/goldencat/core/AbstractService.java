@@ -1,6 +1,7 @@
 package org.alkaids.goldencat.core;
 
 
+import org.alkaids.goldencat.utils.MainUtils;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Condition;
@@ -10,7 +11,8 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
- * 基于通用MyBatis Mapper插件的Service接口的实现
+ *基于通用MyBatis Mapper插件的Service接口的实现
+ *@author :Gravel
  */
 public abstract class AbstractService<T> implements Service<T> {
 
@@ -24,15 +26,13 @@ public abstract class AbstractService<T> implements Service<T> {
         modelClass = (Class<T>) pt.getActualTypeArguments()[0];
     }
 
-    public void save(T model) {
-        mapper.insertSelective(model);
-    }
+    public void save(T model) {mapper.insertSelective(model);}
 
     public void save(List<T> models) {
         mapper.insertList(models);
     }
 
-    public void deleteById(Integer id) {
+    public void deleteById(String id) {
         mapper.deleteByPrimaryKey(id);
     }
 
@@ -44,7 +44,7 @@ public abstract class AbstractService<T> implements Service<T> {
         mapper.updateByPrimaryKeySelective(model);
     }
 
-    public T findById(Integer id) {
+    public T findById(String id) {
         return mapper.selectByPrimaryKey(id);
     }
 
@@ -60,6 +60,21 @@ public abstract class AbstractService<T> implements Service<T> {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+    @Override
+    public T findByModel(T model) throws TooManyResultsException {try {
+        T searchModel = modelClass.newInstance();
+        Field field[] = MainUtils.getAllFields(model);
+        for(Field f : field){
+            f.setAccessible(true);
+            Object object = f.get(model);
+            f.set(searchModel, object);
+        }
+        return mapper.selectOne(searchModel);
+    } catch (ReflectiveOperationException e) {
+        throw new ServiceException(e.getMessage(), e);
+    }
+    }
+
 
     public List<T> findByIds(String ids) {
         return mapper.selectByIds(ids);
