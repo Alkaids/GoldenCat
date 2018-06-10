@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.alkaids.goldencat.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="org.alkaids.goldencat.model.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_level" jdbcType="VARCHAR" property="userLevel" />
+    <result column="user_icon" jdbcType="VARCHAR" property="userIcon" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+</mapper>
