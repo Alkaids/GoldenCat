@@ -7,6 +7,7 @@ import org.alkaids.goldencat.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.alkaids.goldencat.utils.MainUtils;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,18 +26,20 @@ public class IndexController {
     private UserService userService;
 
     @PostMapping("/login")
-    public Result login(User user) {
-        User model = userService.findByModel(user);
-        if(!MainUtils.getSHA256Str(user.getPassword()).equals(model.getPassword())){
-            throw new ServiceException("用户邮箱或者密码错误！");
-        }
-        return ResultGenerator.genSuccessResult(model);
+    public Result login(Model model ,User user) {
+        User temp = userService.findByModel(user);
+        model.addAttribute(temp);
+        return ResultGenerator.genSuccessResult(temp);
     }
 
     @PostMapping("/register")
     public Result register(User user) {
+        User model = userService.findBy("userEmail",user.getUserEmail());
+        if(model!=null){
+            throw new ServiceException("该邮箱已被注册！");
+        }
         user.setId(MainUtils.getUuid());
-        user.setPassword(MainUtils.getSHA256Str(user.getPassword()));
+        user.setPassword(MainUtils.getBCryptStr(user.getPassword()));
         userService.save(user);
         return ResultGenerator.genSuccessResult();
     }

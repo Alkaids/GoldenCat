@@ -17,7 +17,7 @@ import java.util.List;
 * Created by CodeGenerator on 2018/06/10.
 */
 @RestController
-@RequestMapping("/code")
+@RequestMapping("/ ")
 public class CodeController {
     @Resource
     private CodeService codeService;

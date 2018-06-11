@@ -2,6 +2,7 @@ package org.alkaids.goldencat.utils;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
@@ -62,5 +63,18 @@ public class MainUtils {
             e.printStackTrace();
         }
         return encdeStr;
+    }
+
+    /**
+     * BCryptPasswordEncoder 加密
+     * @param str
+     * @return
+     */
+    public static String  getBCryptStr(String str){
+        if(StringUtils.isEmpty(str)){
+            return "";
+        }
+        BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
+        return encoder.encode(str.trim());
     }
 }
