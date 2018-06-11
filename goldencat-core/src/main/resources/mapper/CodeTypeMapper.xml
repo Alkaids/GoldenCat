@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.alkaids.goldencat.mapper.CodeTypeMapper">
+  <resultMap id="BaseResultMap" type="org.alkaids.goldencat.model.CodeType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="p_id" jdbcType="VARCHAR" property="pId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_icon" jdbcType="VARCHAR" property="itemIcon" />
+  </resultMap>
+</mapper>

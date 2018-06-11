@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.alkaids.goldencat.mapper.AccountItemMapper">
+  <resultMap id="BaseResultMap" type="org.alkaids.goldencat.model.AccountItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="acct_id" jdbcType="CHAR" property="acctId" />
+    <result column="tag_id" jdbcType="CHAR" property="tagId" />
+    <result column="change_money" jdbcType="DOUBLE" property="changeMoney" />
+    <result column="item_type" jdbcType="VARCHAR" property="itemType" />
+    <result column="creator_id" jdbcType="CHAR" property="creatorId" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+  </resultMap>
+</mapper>
