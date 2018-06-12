@@ -17,36 +17,36 @@ import java.util.List;
 * Created by CodeGenerator on 2018/06/10.
 */
 @RestController
-@RequestMapping("/ ")
+@RequestMapping(value = "/code")
 public class CodeController {
     @Resource
     private CodeService codeService;
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add")
     public Result add(Code code) {
         codeService.save(code);
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/delete")
+    @PostMapping(value = "/delete")
     public Result delete(@RequestParam String id) {
         codeService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/update")
+    @PostMapping(value = "/update")
     public Result update(Code code) {
         codeService.update(code);
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/detail")
+    @PostMapping(value = "/detail")
     public Result detail(@RequestParam String id) {
         Code code = codeService.findById(id);
         return ResultGenerator.genSuccessResult(code);
     }
 
-    @PostMapping("/list")
+    @PostMapping(value = "/list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<Code> list = codeService.findAll();

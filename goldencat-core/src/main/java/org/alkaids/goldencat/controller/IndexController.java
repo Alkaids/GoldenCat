@@ -20,19 +20,18 @@ import java.util.List;
 * Created by gravel on 2018/06/10.
 */
 @RestController
-@RequestMapping("/index")
+@RequestMapping(value = "/index")
 public class IndexController {
     @Resource
     private UserService userService;
 
-    @PostMapping("/login")
-    public Result login(Model model ,User user) {
+    @PostMapping(value = "/login")
+    public Result login(User user) {
         User temp = userService.findByModel(user);
-        model.addAttribute(temp);
         return ResultGenerator.genSuccessResult(temp);
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/register")
     public Result register(User user) {
         User model = userService.findBy("userEmail",user.getUserEmail());
         if(model!=null){
@@ -44,25 +43,25 @@ public class IndexController {
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/delete")
+    @PostMapping(value = "/delete")
     public Result delete(@RequestParam String id) {
         userService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/update")
+    @PostMapping(value = "/update")
     public Result update(User user) {
         userService.update(user);
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/detail")
+    @PostMapping(value="/detail")
     public Result detail(@RequestParam String id) {
         User user = userService.findById(id);
         return ResultGenerator.genSuccessResult(user);
     }
 
-    @PostMapping("/list")
+    @PostMapping(value = "/list")
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<User> list = userService.findAll();
