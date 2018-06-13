@@ -54,4 +54,9 @@ public class GcUserDetails implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "{username:'" + username + '\'' + ", screenName:'" + screenName + '\'' + ", mail:'" + mail + '\'' + ", userIcon:'" + userIcon + '\'' + ", enabled:" + enabled + '}';
+    }
 }
