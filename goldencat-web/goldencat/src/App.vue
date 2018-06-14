@@ -1,6 +1,8 @@
 <template>
   <div id="app" :style="{background: 'url(' + bgImg + ') no-repeat center center' }" >
-    <router-view/>
+      <transition name="custom-classes-transition" leave-active-class="animated fadeOutLeft" enter-active-class="animated fadeInRight">
+        <router-view/>
+      </transition>
   </div>
 </template>
 

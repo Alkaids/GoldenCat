@@ -1,19 +1,18 @@
 <template>
-  <transition name="custom-classes-transition" leave-active-class="animated fadeOutLeft" enter-active-class="animated fadeInRight">
-      <div class="wrapper">
-        <div class="container" :style="backgroundStyle">
-          <div class="swiper">
-            <!-- <Swiper :list="swiperList" :dots-position="swiperDotsPosition" :height="swiperHeight" :loop="swiperLoop"/> -->
-          </div>
-          <div class="start" @click="jump">
-            <span>开启财富之旅</span>
-            <span class="go">
-              <icon name="right" :w="50" :h="24" ></icon>
-            </span>
-          </div>
-        </div>
+    <div class="wrapper">
+      <div class="top" :style="backgroundStyleTop">
       </div>
-  </transition>
+      <div class="bottom" :style="backgroundStyleBottom">
+      </div>
+      <div class="swiper" id="swiperBox">
+        <Swiper :list="swiperList" :dots-position="swiperDotsPosition" :height="swiperHeight" :loop="swiperLoop"/>
+      </div>
+      <div class="start">
+        <span>开启财富之旅</span>
+      </div>
+      <input type="button" class="login" value="登录">
+      <input type="button" class="logon" value="注册">
+    </div>
 </template>
 
 <script>
@@ -23,14 +22,14 @@ export default {
   name: 'Home',
   data () {
     return {
-      backgroundStyle: {
-        background: 'url('+require('../assets/login/hand.png')+')',
-        backgroundSize:'100%',
-        backgroundRepeat:'no-repeat',
-        backgroundPosition:'bottom'
+      backgroundStyleTop: {
+        background: '#FFD700',
+      },
+      backgroundStyleBottom: {
+        background: '#fff',
       },
       swiperLoop: true,
-      swiperHeight: '362px',
+      swiperHeight: document.getElementsByTagName('body')[0].clientHeight/2 + 'px',
       swiperDotsPosition: 'center',
       swiperList: [{
               url: 'javascript:',
@@ -50,7 +49,7 @@ export default {
     }
   },
   components: {
-    Swiper,
+    Swiper
   }
 }
 </script>
@@ -62,28 +61,51 @@ export default {
     height:100%;
     color:#fefefe;
   }
-  .container{
+  .top{
     width:100%;
-    height:100%;
+    height:50%;
+  }
+  .bottom{
+    width:100%;
+    height:50%;
   }
   .swiper{
-    width:225px;
+    width:80%;
+    height:50%;
     position: absolute;
-    bottom:104px;
-    left:60px;
+    top:20%;
+    left:10%;
+    border:2px solid #ddd;
+    box-shadow: -5px 5px 5px #888888
   }
   .start{
     position:absolute;
-    bottom:85%;
-    left:120px;
+    top:25%;
+    left:130px;
     font-size:26px;
   }
-  .go{
-    animation: change 2s infinite linear;
+  .login{
+    position:absolute;
+    bottom:10%;
+    left:12%;
+    border:none;
+    width:30%;
+    height:40px;
+    line-height:40px;
+    background:#FFD700;
+    color:#fff;
+    border-radius:20px;
   }
-  @keyframes change{
-    0% {opacity:1}
-    50% {opacity:0}
-    100% {opacity:1}
+  .logon{
+    position:absolute;
+    bottom:10%;
+    right:12%;  
+    width:30%;
+    height:40px;
+    line-height:40px;
+    border:1px solid #FFD700;
+    color:#FFD700;
+    background:#fff;
+    border-radius:20px; 
   }
 </style>
