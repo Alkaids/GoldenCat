@@ -9,7 +9,10 @@ GoldenCat是一个前后端分离的记账程序。
 
 ## 技术栈
  - 前端：
- 1. Vue    
+ 1. vue + vue-router (核心框架)
+ 2. lib-flexible (弹性布局)
+ 3. vux (移动端组件库)
+ 4. weex (混合开发) 
  - 后端：
  1. Spring Boot  
  2. Spring Security  
