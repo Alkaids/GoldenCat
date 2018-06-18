@@ -70,6 +70,6 @@ public class IndexController {
         } else {
             throw new ServiceException("获取当前登录用户信息失败！");
         }
-    }
+    }  
 
 }
