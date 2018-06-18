@@ -3,12 +3,14 @@
 * jdk1.8
 * lombok插件
 * ide推荐使用idea
+* redis
 ### 项目搭建
 ```
 git clone https://github.com/Alkaids/GoldenCat.git
 ```
-然后在MySQL数据库，执行`resources`下的`gc.sql`初始化相关脚本。
-
+1. 然后在MySQL数据库，执行`resources`下的`gc.sql`初始化相关脚本。
+2. 启动redis 客户端，默认是6379端口，或者按你自己的配置。
+3. 然后启动项目，run!
 ### 接口部分
 接口使用restful开发规范开发，目前的已经写好的接口放在[RAP][1]里面。
 如果没有权限的话，联系[我][2]。

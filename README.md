@@ -17,8 +17,10 @@ GoldenCat是一个前后端分离的记账程序。
  - 后端：
  1. Spring Boot  
  2. Spring Security  
- 3. MyBatis
- 4. MySQL
+ 3. Spring OAuth2
+ 4. Redis
+ 5. MyBatis
+ 6. MySQL
 ## 开发指南
 [后端开发指南](https://github.com/Alkaids/GoldenCat/blob/master/goldencat-core/dev.md)
 ## 目标功能
