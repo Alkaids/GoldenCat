@@ -1,6 +1,7 @@
 # GoldenCat
 * [简介](#简介)
 * [技术栈](#技术栈)
+* [开发指南](#开发指南)
 * [目标功能](#目标功能)
 * [开源协议](#开源协议)
 ## 简介
@@ -18,6 +19,8 @@ GoldenCat是一个前后端分离的记账程序。
  2. Spring Security  
  3. MyBatis
  4. MySQL
+## 开发指南
+[后端开发指南](https://github.com/Alkaids/GoldenCat/blob/master/goldencat-core/dev.md)
 ## 目标功能
  - 账本分类  
  - 导出账本  
