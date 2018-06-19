@@ -43,12 +43,11 @@ public class OAuth2Configuration {
                     .authenticationEntryPoint(gcAuthenticationEntryPoint)
                     .and()
                     .logout()
-                    .logoutUrl("/index/logout")
+                    .logoutUrl("/oauth/logout")
                     .logoutSuccessHandler(customLogoutSuccessHandler)
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/index/list").permitAll()
-                    .antMatchers("/code/**").authenticated();
+                    .antMatchers("/**/**").permitAll();
 
         }
 

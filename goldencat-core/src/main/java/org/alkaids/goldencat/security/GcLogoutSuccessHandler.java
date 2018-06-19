@@ -1,5 +1,6 @@
 package org.alkaids.goldencat.security;
 
+import org.alkaids.goldencat.core.ResultGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -12,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 
 /**
@@ -21,7 +23,7 @@ import java.io.IOException;
 public class GcLogoutSuccessHandler
         extends AbstractAuthenticationTargetUrlRequestHandler
         implements LogoutSuccessHandler {
-    private static final String BEARER_AUTHENTICATION = "Bearer ";
+    private static final String BEARER_AUTHENTICATION = "Bearer";
     private static final String HEADER_AUTHORIZATION = "authorization";
 
     @Autowired
@@ -35,18 +37,17 @@ public class GcLogoutSuccessHandler
 
         String token = request.getHeader(HEADER_AUTHORIZATION);
 
-        if (token != null && token.startsWith(BEARER_AUTHENTICATION)) {
+        if (token != null) {
 
-            OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token.split(" ")[0]);
+            OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
 
             if (oAuth2AccessToken != null) {
                 tokenStore.removeAccessToken(oAuth2AccessToken);
             }
 
         }
-
-        response.setStatus(HttpServletResponse.SC_OK);
-
+        PrintWriter out  = response.getWriter();
+        out.append(ResultGenerator.genSuccessResult().toString());
     }
 
 }

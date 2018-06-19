@@ -5,18 +5,15 @@ import org.alkaids.goldencat.core.ResultGenerator;
 import org.alkaids.goldencat.core.ServiceException;
 import org.alkaids.goldencat.model.User;
 import org.alkaids.goldencat.service.UserService;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.alkaids.goldencat.utils.MainUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * 用户相关接口
